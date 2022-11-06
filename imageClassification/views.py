@@ -43,11 +43,3 @@ def index(request):
 
 
     return  render(request, 'images/index.html')
-
-# class index(View):
-#     def get(self):
-#         return render(request, 'images/index.html')
-
-#     def post(self):
-#         return render(request, 'images/index.html')
-
