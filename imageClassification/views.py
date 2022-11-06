@@ -7,6 +7,7 @@ from django.views.generic import View
 import cv2 as cv
 from django.core.files.storage import FileSystemStorage
 import urllib
+import base64
 
     
     #cv2.imshow('Image', image)
@@ -25,13 +26,19 @@ def index(request):
         req = urllib.request.urlopen(request.POST['url'])
         arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
         img = cv.imdecode(arr, -1) # 'Load it as it is'
+        
+        img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+        
+        width = int(32)
+        height = int(32)
+        dim = (width, height)
+        img = cv.resize(img, dim, interpolation = cv.INTER_AREA)
 
-        img = cv.cvtColor(img, cv.COLOR_BGR2RGB)    
 
         prediction = model.predict(np.array([img]) / 255)
 
         return  render(request, 'images/imageProcessed.html', {
-            'prediction': class_names[np.argmax(prediction)]
+            'prediction': class_names[np.argmax(prediction)],
         })
 
 

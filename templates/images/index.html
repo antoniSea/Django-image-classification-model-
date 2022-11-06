@@ -1,6 +1,6 @@
 {% extends "app.html" %}
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-10">
   <div class="card">
     <div class="card-header">
       <h2>Prześlij obraz</h2>
@@ -8,15 +8,18 @@
     <div class="card-body">
       <form enctype="multipart/form-data" method="post">
         {% csrf_token %}
-        
+
         <div class="form-group">
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Wpisz url obrazu">
+          <input name="url" type="url" class="form-control" id="url" aria-describedby="image url" placeholder="Wpisz url obrazu">
         </div>
 
         <button role="submit" class="mt-4 btn btn-primary">
           Wyślij zapytanie
         </button>
       </form>
+    </div>
+    <div class="card-footer text-muted">
+      Uwaga, najlepsze rezultaty uzyskasz przy obrazie w kwadratowym formacie. Model został wytranowany na obrazach 32X32 z biblioteki cifar100 zawierającej obrazy z stu kategorii <a href=""> kliknij aby zobaczyć listę kategorii </a>. Link do githuba z notebookiem: <a href="https://github.com/antoniSea/Image-recognition-python-ai/blob/main/imagerecognition.ipynb">https://github.com/antoniSea/Image-recognition-python-ai/blob/main/imagerecognition.ipynb</a>
     </div>
   </div>
 </div>
