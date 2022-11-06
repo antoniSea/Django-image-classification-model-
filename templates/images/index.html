@@ -1,0 +1,23 @@
+{% extends "app.html" %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <h2>Prześlij obraz</h2>
+    </div>
+    <div class="card-body">
+      <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Wpisz url obrazu">
+        </div>
+
+        <button role="submit" class="mt-4 btn btn-primary">
+          Wyślij zapytanie
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
