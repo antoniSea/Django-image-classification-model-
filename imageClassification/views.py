@@ -11,10 +11,6 @@ import base64
 import json
 from django.core.validators import URLValidator
 
-    
-    #cv2.imshow('Image', image)
-    #cv2.waitKey(0)
-
 def index(request):
 
     if request.method == "POST":
